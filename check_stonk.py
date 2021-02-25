@@ -90,7 +90,10 @@ def reduce_mem_usage(df):
     for col in df.columns:
         col_type = df[col].dtype
         
-        if col_type != object:
+        #Stop if col of type Datetime
+        if 'ate' in col_type.name:
+            pass
+        elif col_type != object:
             c_min = df[col].min()
             c_max = df[col].max()
             if str(col_type)[:3] == 'int':
